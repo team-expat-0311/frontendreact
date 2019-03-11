@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import LogIn from "./Components/LogIn";
 import Photos from "./Components/Photos";
@@ -13,11 +13,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        
-        <Router path="/" component={Home}/>
-        <Router path="/register" component={Register}/>
-        <Router path="/login" component={LogIn}/>
-        <Router path="/photos" component={Photos}/>
+        <Route exact path="/" component={Home}/>
+        <Route path="/register" component={Register}/>
+        <Route path="/login" component={LogIn}/>
+        <Route path="/photos" component={Photos}/>
       </div>
     );
   }

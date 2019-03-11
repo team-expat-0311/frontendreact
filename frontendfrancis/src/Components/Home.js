@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 const Home = props => {
     return (
-        <div className="register">
+        <div className="Home">
+        Test
         </div>
     )
 }
