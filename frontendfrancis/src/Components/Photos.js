@@ -14,18 +14,16 @@ class Photos extends Component {
 
     componentDidMount() {
         axios.get("https://expat-journal.herokuapp.com/api/photos/all")
-            .then(function(res){
-
-                // let photoList = res.data;
-                this.setState({photoList: res.data});
-                // console.log(this.state.photos)
-                })
+            .then((res) =>{
+               return this.setState({photoList: res.data});
+            })
             .catch(err => console.log(err));
 
-            console.log(this.state.photoList)
+            
     }
 
     render() {
+        console.log(this.state.photoList)
     return (
         <div className="photos">
             {this.state.photoList.map(a_photo =>

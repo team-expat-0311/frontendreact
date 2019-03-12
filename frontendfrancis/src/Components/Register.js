@@ -44,7 +44,11 @@ class Register extends Component {
                 <b>Username:</b> <input type="text" name="username" onChange={this.handleChanges}></input>
                 <b>Password:</b><input type="text" name="password" onChange={this.handleChanges}></input>
                 <b>Name:</b><input type="text" name="name" onChange={this.handleChanges}></input>
-                <b>Role:</b><input type="text" name="role" onChange={this.handleChanges}></input>
+                <b>Role:</b>
+                <select onChange={this.handleChanges} name="role">
+                <option name="role" value="user">user</option>
+                <option name="role" value="expat">expat</option>
+                </select>
                 <b>Age:</b><input type="text" name="age" onChange={this.handleChanges}></input>
                 <b>Location:</b><input type="text" name="location" onChange={this.handleChanges}></input>
 

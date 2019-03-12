@@ -26,6 +26,9 @@ class LogIn extends Component {
             .then(function(res){
                 console.log(res);
                 localStorage.setItem("token", res.data.token);
+                localStorage.setItem("role", res.data.role);
+                localStorage.setItem("user_id", res.data.user_id)
+                console.log("logging in!");
             })
             .catch(err => console.log(err));
         console.log("Done!")
@@ -37,8 +40,8 @@ class LogIn extends Component {
         return (
             <div className="login">
                 <form onSubmit={this.loggingin}>
-                    <input type="text" name="username" onChange={this.handleChanges}></input>
-                    <input type="text" name="password" onChange={this.handleChanges}></input>
+                    <b>Username:</b><input type="text" name="username" onChange={this.handleChanges}></input>
+                    <b>Password:</b><input type="text" name="password" onChange={this.handleChanges}></input>
 
                     <button type="submit">Log In</button>
                 </form>
