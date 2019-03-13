@@ -14,6 +14,7 @@ code {
     monospace;
 }
 
+<<<<<<< HEAD
 nav {
   display: flex;
   flex-direction: row;
@@ -22,3 +23,6 @@ nav {
   margin-top: 2%;
   margin-bottom: 2%;
 }
+=======
+
+>>>>>>> 93a470b77cf2a575e8b2a7234cf98e03022147d5

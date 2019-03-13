@@ -1,0 +1,20 @@
+.register {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    align-content: center;
+    justify-content: center; 
+    text-align: center;
+}
+
+.register .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.register .row.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;  
+}
