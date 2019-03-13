@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import LogIn from "./Components/LogIn";
 import Photos from "./Components/Photos";
+import Photo from "./Components/Photo";
 import PhotosPrivate from "./Components/PhotosPrivate";
 
 import Register from "./Components/Register";
@@ -11,7 +12,12 @@ import ProtectedRoute from "./Routers/ProtectedRoute";
 
 import logo from './logo.svg';
 import './App.css';
+<<<<<<< HEAD
+import './photos.css';
+import "./register.css";
+=======
 import "./Project.css";
+>>>>>>> 93a470b77cf2a575e8b2a7234cf98e03022147d5
 
 class App extends Component {
   render() {
@@ -29,6 +35,7 @@ class App extends Component {
         <Route path="/register" component={Register}/>
         <Route path="/login" component={LogIn}/>
         <Route path="/photos" component={Photos}/>
+        <Route path="/photos/:id"  component={<Photo/>}/>
         <ProtectedRoute path="/private" component={PhotosPrivate}/>
       </div>
     );

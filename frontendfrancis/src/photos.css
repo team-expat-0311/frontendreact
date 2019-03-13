@@ -1,0 +1,14 @@
+.Photo {
+    width: 100%;
+    background-color: wheat;
+    padding-bottom: 2%;
+}
+
+.Photo img {
+    width: 85%;
+    margin: 2%;
+}
+
+.Photo ul {
+    text-decoration: none; 
+}

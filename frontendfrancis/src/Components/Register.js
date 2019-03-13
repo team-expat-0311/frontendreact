@@ -26,6 +26,8 @@ class Register extends Component {
         axios.post("https://expat-journal.herokuapp.com/api/auth/register", newUser)
             .then(res => console.log(res))
             .catch(err => console.log(err));
+
+        this.props.history.push('/photos');
             
     }
 
@@ -41,19 +43,39 @@ class Register extends Component {
             <div className="register">
                 <form onSubmit={this.register}>
                 
+                <ul>
+                <div className="row">
                 <b>Username:</b> <input type="text" name="username" onChange={this.handleChanges}></input>
+                </div>
+
+                <div className="row">
                 <b>Password:</b><input type="text" name="password" onChange={this.handleChanges}></input>
+                </div>
+                
+                <div className="row">
                 <b>Name:</b><input type="text" name="name" onChange={this.handleChanges}></input>
+                </div>
+                
+                <div className="row">
                 <b>Role:</b>
                 <select onChange={this.handleChanges} name="role">
                 <option name="role" value="user">user</option>
                 <option name="role" value="expat">expat</option>
                 </select>
-                <b>Age:</b><input type="text" name="age" onChange={this.handleChanges}></input>
-                <b>Location:</b><input type="text" name="location" onChange={this.handleChanges}></input>
+                </div>
 
-                <button type="submit">Register</button>
+                <div className="row">
+                <b>Age:</b><input type="text" name="age" onChange={this.handleChanges}></input>
+                </div>
                 
+                <div className="row">
+                <b>Location:</b><input type="text" name="location" onChange={this.handleChanges}></input>
+                </div>
+
+                <div className="row button">
+                <button type="submit">Register</button>
+                </div>
+                </ul>
                 </form>
             </div>
         )
