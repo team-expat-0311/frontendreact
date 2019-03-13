@@ -1,0 +1,11 @@
+.link {
+    text-decoration: none; 
+
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: space-around;
+}

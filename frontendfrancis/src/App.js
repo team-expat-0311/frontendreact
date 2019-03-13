@@ -11,17 +11,18 @@ import ProtectedRoute from "./Routers/ProtectedRoute";
 
 import logo from './logo.svg';
 import './App.css';
+import "./Project.css";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <nav>
-          <Link to="/">Home</Link>
-          <Link to="/register">Register</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/photos">Public Photos</Link>
-          <Link to="/private">Private</Link>
+          <Link to="/" className="link">Home</Link>
+          <Link to="/register" className="link">Register</Link>
+          <Link to="/login" className="link">Login</Link>
+          <Link to="/photos" className="link">Public Photos</Link>
+          <Link to="/private" className="link"> Private</Link>
         </nav>
 
         <Route exact path="/" component={Home}/>
