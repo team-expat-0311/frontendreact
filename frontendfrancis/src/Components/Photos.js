@@ -31,6 +31,7 @@ class Photos extends Component {
             <Photo photo={a_photo} />    
 
             )}
+            
         </div>
     )
     }

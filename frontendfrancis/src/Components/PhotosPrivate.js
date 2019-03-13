@@ -87,15 +87,30 @@ class PhotosPrivate extends Component {
 
     }
 
-    delete = (e,id) => {
+    delete = (e, id) => {
+        console.log(e);
 
         e.preventDefault();
+        let localID = localStorage.getItem("user_id");
 
         let selected_id = id; 
+        console.log(selected_id);
 
-        axios.delete(`https://expat-journal.herokuapp.com/api/photos/all/${this.state.id}`, )
-            .then(res => this.setState({photoList: res.data}))
-            .catch(err => console.log(err));
+        axios.delete(`https://expat-journal.herokuapp.com/api/photos/all/${selected_id}`, {headers: {
+            Authorization: localStorage.getItem('token')
+            }} )
+            .then( 
+                axios.get(`https://expat-journal.herokuapp.com/api/photos/all/${localID}`,  {
+                headers: {
+                Authorization: localStorage.getItem('token')
+                }
+                })
+            .then((res) =>{
+                console.log(res);
+                this.setState({photoList: res.data})
+                    })
+                )
+        .catch(err => console.log(err));
 
     }
 
@@ -111,7 +126,7 @@ class PhotosPrivate extends Component {
         <div className="photos-private">
             {this.state.photoList.map(a_photo =>
                 
-            <Photo photo={a_photo} />    
+            <Photo photo={a_photo} delete={this.delete} />    
 
             )}
 
