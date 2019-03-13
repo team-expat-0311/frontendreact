@@ -62,6 +62,7 @@ class PhotosPrivate extends Component {
              }))
             .catch(err => console.log(err));
 
+        console.log("updating photos!");
     }
 
     add = e => {
@@ -114,6 +115,10 @@ class PhotosPrivate extends Component {
 
     }
 
+    redirect = id => {
+        this.props.history.push(`/photo/${id}`);
+    }
+
     handleChanges = e => {
         e.preventDefault();
         console.log(e.target.name, e.target.value )
@@ -126,7 +131,7 @@ class PhotosPrivate extends Component {
         <div className="photos-private">
             {this.state.photoList.map(a_photo =>
                 
-            <Photo photo={a_photo} delete={this.delete} />    
+            <Photo photo={a_photo} delete={this.delete} clickPhoto={this.redirect}/>    
 
             )}
 
