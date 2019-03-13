@@ -5,9 +5,9 @@ ID = "d5018938-41d4-4e83-b2b4-1a90f48d97c8"
 
 [build]
   # This is the directory to change to before starting a build.
-  base    = "frontendreact"
+  base    = "frontendfrancis"
   # NOTE: This is where we will look for package.json/.nvmrc/etc, not root.
   # This is the directory that you are publishing from (relative to root of your repo)
-  publish = "/frontendfrancis/build"
+  publish = "frontendfrancis/build"
   # This will be your default build command
   command = "yarn build"
