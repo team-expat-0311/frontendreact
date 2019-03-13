@@ -155,7 +155,7 @@ class PhotosPrivate extends Component {
                 <b>Description:</b> <input type="text" name="description" onChange={this.handleChanges}></input>
                 <b>Image URL:</b><input type="text" name="img_url" onChange={this.handleChanges}></input>
 
-                <button type="submit">Update Photo!</button>
+                <button type="submit">Add Photo!</button>
                 </form>
             </div>
 
