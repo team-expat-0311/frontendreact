@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import MyDropZone from "./Dropzone";
+import MyDropzone from "./Dropzone";
 
 import Photo from "./Photo";
 
@@ -135,6 +135,8 @@ class PhotosPrivate extends Component {
             <Photo photo={a_photo} delete={this.delete} clickPhoto={this.redirect}/>    
 
             )}
+
+            <MyDropzone/>
 
             <div className="photos-update-form">
                 <form onSubmit={this.update}>
