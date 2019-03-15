@@ -1,12 +1,12 @@
 import React, { Component, useCallback } from 'react';
 import axios from 'axios';
 import Dropzone from 'react-dropzone';
-import request from 'superagent-mock';
+import request from 'superagent';
 
 import Photo from "./Photo";
 
-const CLOUDINARY_UPLOAD_PRESET = 'your_upload_preset_id';
-const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/your_cloudinary_app_name/upload';
+const CLOUDINARY_UPLOAD_PRESET = 'hgdd9gxv';
+const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/expat_journal/upload';
 
 class PhotosPrivate extends Component {
     constructor(props) {
@@ -18,7 +18,8 @@ class PhotosPrivate extends Component {
             id: "",
             location: "",
             description: "",
-            uploadedFileCloudinaryUrl: ''
+            uploadedFileCloudinaryUrl: '',
+            uploadedFile: null
         };
 
         console.log("in private photos!")
@@ -143,7 +144,8 @@ class PhotosPrivate extends Component {
     handleImageUpload(file) {
         let upload = request.post(CLOUDINARY_UPLOAD_URL)
                             .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-                            .field('file', file);
+                            .field('file', file)
+                            .field('api_key', 882347815869688)
 
         upload.end((err, response) => {
         if (err) {
@@ -152,8 +154,9 @@ class PhotosPrivate extends Component {
 
         if (response.body.secure_url !== '') {
             this.setState({
-            uploadedFileCloudinaryUrl: response.body.secure_url
+            img_url: response.body.secure_url
             });
+            console.log(this.state.img_url);
         }
         });
     }
