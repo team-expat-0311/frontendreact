@@ -1,7 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, useCallback } from 'react';
 import axios from 'axios';
+import Dropzone from 'react-dropzone';
+import request from 'superagent';
 
 import Photo from "./Photo";
+
+const CLOUDINARY_UPLOAD_PRESET = 'hgdd9gxv';
+const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/expat_journal/upload';
 
 class PhotosPrivate extends Component {
     constructor(props) {
@@ -12,7 +17,9 @@ class PhotosPrivate extends Component {
             img_url: "",
             id: "",
             location: "",
-            description: ""
+            description: "",
+            uploadedFileCloudinaryUrl: '',
+            uploadedFile: null
         };
 
         console.log("in private photos!")
@@ -125,6 +132,35 @@ class PhotosPrivate extends Component {
         this.setState({[e.target.name]: e.target.value});
     }
 
+
+    onImageDrop(files) {
+        this.setState({
+          uploadedFile: files[0]
+        });
+    
+        this.handleImageUpload(files[0]);
+      }
+
+    handleImageUpload(file) {
+        let upload = request.post(CLOUDINARY_UPLOAD_URL)
+                            .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+                            .field('file', file)
+                            .field('api_key', 882347815869688)
+
+        upload.end((err, response) => {
+        if (err) {
+            console.error(err);
+        }
+
+        if (response.body.secure_url !== '') {
+            this.setState({
+            img_url: response.body.secure_url
+            });
+            console.log(this.state.img_url);
+        }
+        });
+    }
+
     render() {
         // console.log(this.state.photoList)
     return (
@@ -135,8 +171,12 @@ class PhotosPrivate extends Component {
 
             )}
 
+            
+
             <div className="photos-update-form">
                 <form onSubmit={this.update}>
+
+
                 <h2>Update Photos</h2>
                 <select onChange={this.handleChanges} name="id">
                     {this.state.photoList.map(a_photo =>
@@ -145,6 +185,9 @@ class PhotosPrivate extends Component {
     
                     )}
                 </select>
+
+
+
                 <b>Location:</b><input type="text" name="location" onChange={this.handleChanges}></input>
                 <b>Description:</b> <input type="text" name="description" onChange={this.handleChanges}></input>
                 <b>Image URL:</b><input type="text" name="img_url" onChange={this.handleChanges}></input>
@@ -155,10 +198,29 @@ class PhotosPrivate extends Component {
 
             <div className="photos-add-form">
                 <form onSubmit={this.add}>
+
+            <Dropzone
+            onDrop={this.onImageDrop.bind(this)}
+            accept="image/*"
+            multiple={false}>
+                {({getRootProps, getInputProps}) => {
+                return (
+                    <div
+                    {...getRootProps()}
+                    >
+                    <input {...getInputProps()} />
+                    {
+                    <p>Try dropping some files here, or click to select files to upload.</p>
+                    }
+                    </div>
+                )
+            }}
+            </Dropzone>
+
                 <h2> Add Photos</h2>
                 <b>Location:</b><input type="text" name="location" onChange={this.handleChanges}></input>
                 <b>Description:</b> <input type="text" name="description" onChange={this.handleChanges}></input>
-                <b>Image URL:</b><input type="text" name="img_url" onChange={this.handleChanges}></input>
+                {/* <b>Image URL:</b><input type="text" name="img_url" onChange={this.handleChanges}></input> */}
 
                 <button type="submit">Add Photo!</button>
                 </form>
